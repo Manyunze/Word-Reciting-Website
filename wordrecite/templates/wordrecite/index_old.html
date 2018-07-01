@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+{%block content%}
+{% if request.user.is_authenticated and usermore.vocabulary %}
+    <h2 style="text-align:center">Hello, {{usermore}}</h2>
+    <div class="col-md-8 col-md-offset-2">
+      {# 注意在此处的模板中的判断语句记得空格隔开 #}
+  {% if message == '今天的任务已经完成！什么，你还要学习，再来一组请点这里！' %}<div class="alert alert-success" role="alert"><strong><a href="{%url 'wordrecite:moretaskview' %}">{{ message }}</a></strong></div>{% endif %}
+  {% if message == '该词库已经背完！快去更换词库吧'%}<div class="alert alert-success" role="alert"><strong><a href="{%url 'wordrecite:settingsview' %}">{{ message }}</a></strong></div>{% endif %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 style="text-align:center">学习状态</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>正在背诵的范围</th>
+          <th>每日的单词学习量</th>
+          <th>未学习的单词数量</th>
+          <th>已学习的单词数量</th>
+          <th> 已掌握的单词数量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td>  {{usermore.vocabulary}}</td>
+        <td>    {{usermore.daily_words}}</td>
+        <td>  {{usermore.unfinishedcount}}</td>
+        <td>    {{usermore.knowcount}}</td>
+        <td>  {{usermore.finishedcount}}</td>
+      </tbody>
+    </table>
+  </div>
+</div>
+<a href="{%url 'wordrecite:taskview'%}"><button type="button" class="btn btn-info">去学习</button></a>
+</div>
+{%endif%}
+{%if request.user.is_authenticated and not usermore.vocabulary%}
+<h2 style="text-align:center">Hello, {{usermore}}</h2>
+<div class="col-md-8 col-md-offset-2">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 style="text-align:center">学习状态</h3>
+  </div>
+  <div class="panel-body">
+你还没有做出学习的设置，快去<a href="{%url 'wordrecite:settingsview'%}">设置</a>
+  </div>
+</div>
+</div>
+{%endif%}
+{%if not request.user.is_authenticated%}
+<h2 style="text-align:center">什么？没有登陆，快去<a href="{%url 'wordrecite:loginview'%}">登陆</a></h2>
+  <h2 style="text-align:center">什么？没有账号，快去<a href="{%url 'wordrecite:registerview'%}">注册</a></h2>
+{% endif %}
+
+
+{%endblock%}

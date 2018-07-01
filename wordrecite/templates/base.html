@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%block html %}
+{% load staticfiles %}
+{% load myfilters %}
+
+  <head>
+    {%block head %}
+    <title>{% block title %}Words{% endblock title %}</title>
+    <script src="{% static 'ckeditor/ckeditor.js'%}"></script>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {%block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%endblock metas %}
+
+    {%block styles %}
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    {%endblock styles %}
+    {%endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body %}
+    {% block navbar %}
+        <div class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                {% if request.user.is_authenticated %}
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                      <li><a href="{%url 'wordrecite:indexview'%}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+                      <li><a href="{%url 'wordrecite:settingsview'%}"><span class="glyphicon glyphicon-cog"></span>&nbsp;学习设置</a></li>
+                        <li><a href="{%url 'wordrecite:mynotesview'%}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;我的笔记</a></li>
+                      </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{%url 'wordrecite:logoutview'%}"><span class="glyphicon glyphicon-log-out"></span>登出</a></li>
+                    </ul>
+                  </div>
+                        {% else %}
+                        <div class="navbar-collapse collapse">
+                          <ul class="nav navbar-nav">
+                              <li><a href="{%url 'wordrecite:indexview'%}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+                            </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{%url 'wordrecite:registerview'%}"><span class="glyphicon glyphicon-user"></span>&nbsp;注册</a></li>
+                            <li><a href="{%url 'wordrecite:loginview'%}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;登入</a></li>
+                          </ul>
+                        </div>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+    {% endblock %}
+    {% block content %}
+    {%endblock content %}
+
+    {% block scripts %}
+
+    {%endblock scripts %}
+    {%endblock body %}
+  </body>
+{%endblock html %}
+</html>

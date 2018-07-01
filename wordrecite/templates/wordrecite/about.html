@@ -1,0 +1,151 @@
+{% load staticfiles %}
+{%block content%}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>关于VocalMem - VocalMem</title>
+<!-- Favicon-->
+<link type="favicon" rel="shortcut icon" href="{% static 'wordrecite/images/favicon.pg' %}" />
+<link href="{% static 'wordrecite/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'wordrecite/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="VocalMem Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="{% static 'wordrecite/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'wordrecite/js/bootstrap.js' %}"></script>
+<script src="{% static 'wordrecite/js/responsiveslides.min.js' %}"></script>
+ <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+
+</head>
+<body>
+		<!--header-->
+			<div class="header head-top">
+				<div class="container">
+					<div class="header-top">
+						<nav class="navbar navbar-default">
+							<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+									  </button>
+									<div class="navbar-brand">
+										<h1><span><a href="{%url 'wordrecite:indexview'%}">VocalMem</a></span></h1>
+									</div>
+								</div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+										<li><a href="{%url 'wordrecite:indexview'%}">Home </span></a></li>
+										<li class="active"><a href="{%url 'wordrecite:about'%}">What's VocalMem<span class="sr-only">(current)</span></a></li>
+										<li><a href="{%url 'wordrecite:vocabularyview'%}">Vocabularies</a></li>
+										<li><a href="{%url 'wordrecite:mynotesview'%}">Notebook</a></li>
+										{% if request.user.is_authenticated%}
+										<li><a>Welcome, {{usermore}}</a></li>
+										<li><a href="{%url 'wordrecite:logoutview'%}">Logout</a></li>
+										{% endif %}
+										{%if not request.user.is_authenticated%}
+										<li><a href="{%url 'wordrecite:registerview'%}">Register</a></li>
+										<li><a href="{%url 'wordrecite:loginview'%}">Login</a></li>
+										{% endif %}
+                                    </ul>
+
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+						</nav>
+
+					</div>
+		</div>
+</div>
+<!--header-->
+		<!--about-->
+		<div class="content">
+			<div class="about-section">
+				<div class="container">
+					<h2>关于我们</h2>
+					<img src="{% static 'wordrecite/images/about1.png' %}" class="img-responsive" alt="/">
+					<h5>VocalMem, 是你最贴心的的智能单词助手</h5>
+					<p>VocalMem是一款由浙江大学主导开发的互联网英语智能学习平台，面向各种年龄段的英语学习人士。VocalMem主打背单词功能，在线上为用户提供全方位、各种需求的背单词服务，包括四六级、雅思、托福、考研等全套考纲词汇。VocalMem包含单词本和笔记功能，能记录用户在背单词时的种种问题和记录，真正做到“为用户的学习效果负责”。 </p>
+				</div>
+		    </div>
+		<!--about-->
+		<!--why-choose-->
+			<div class="why-choose">
+				<div class="container">
+					<h3>我们提供什么</h3>
+					<div class="choose-grids">
+						<div class="col-md-4 choose-grid">
+							<h4>1. 优秀的在线背词体验</h4>
+							<p>VocalMem是首个推出的全方位在线英语背诵和学习网站。相比传统的单词书，在线背诵具有方便快捷的优势，避免了随身携带书本和纸张的不便。同时，相比传统的背词，在线背词提供了更加智能的算法来记录已经掌握的和还未掌握的单词，也可以打乱单词本，避免了上下文的干扰，为用户提供了最舒适和纯粹的背单词体验。</p>
+						</div>
+						<div class="col-md-4 choose-grid">
+						<h4>2. 完备的单词库</h4>
+						<p>VocalMem和各大英语网站和出题方取得联系，获取了第一手的单词库资料。四六级、雅思、托福、考研的词汇挑选经过了人工筛选和实际测试，有极高的命中率。2017年的数据显示，VocalMem在各大考试中重难点单词的平均命中率达到了97%。同时，我们定期对单词书进行清洗，去除生僻词汇，保证用户背诵的都是最重要的单词。</p>
+						</div>
+						<div class="col-md-4 choose-grid">
+						<h4>3. 负责的背词记录</h4>
+						<p>VocalMem不止想做一个背单词的平台，更希望实现残次背诵的反馈。在本站注册的用户都会享受VocalMem带来的单词保存和笔记留存服务，即无论用户走到天涯海角，只要随时打开VocalMem，就能回忆起以前没送过的单词，温故而知新。</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>	
+			</div>
+            <!--GET IN TOUCH-->
+            <div class="touch-section">
+            <div class="container">
+                <h3>联系我们</h3>
+                <div class="touch-grids">
+                    <div class="col-md-4 touch-grid">
+                        <h4>地址</h4>
+                        <h5>浙江大学玉泉校区</h5>
+                        <p>西湖区，浙大路38号</p>
+                        <p>浙江省杭州市</p>
+                        <p>中华人民共和国</p>
+                    </div>
+                    <div class="col-md-4 touch-grid">
+                        <h4>合作</h4>
+                        <h5>合作联系人</h5>
+                        <p>联系电话 : +86 188 6715 7169</p>
+                        <p>邮箱 : 玉泉校区, 32舍信箱</p>
+                        <p>E-mail : <a href="mailto:yzman@zju.edu.cn"> yzman@zju.edu.cn</a></p>
+                    </div>
+                    <div class="col-md-4 touch-grid">
+                    <h4>咨询</h4>
+                            <h5>问题咨询和举报</h5>
+                        <p>咨询电话 : +86 188 6715 7169</p>
+                        <p>QQ : 523374078</p>
+                        <p>E-mail : <a href="mailto:yzman@zju.edu.cn"> yzman@zju.edu.cn</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            </div>
+            <!--GET IN TOUCH-->
+			</div>
+			<!--footer-->
+					<div class="footer-section">
+						<div class="container">
+							<div class="footer-top">
+								<p>&copy; 2018 VocalMem. All rights reserved | Design by Yunze Man </a></p>
+							</div>
+						</div>
+					</div>
+</body>
+</html>
+{%endblock%}

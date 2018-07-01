@@ -1,0 +1,127 @@
+{% load staticfiles %}
+{%block content%}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>VocalMem单词功能 - VocalMem</title>
+<link href="{% static 'wordrecite/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'wordrecite/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'wordrecite/css/lightbox.css' %}">
+<link rel="shortcut icon" href="{% static 'wordrecite/images/favicon.png' %}" />	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="VocalMem Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="{% static 'wordrecite/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'wordrecite/js/bootstrap.js' %}"></script>
+<script src="{% static 'wordrecite/js/responsiveslides.min.js' %}"></script>
+ <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+
+</head>
+<body>
+		<!--header-->
+			<div class="header head-top">
+				<div class="container">
+					<div class="header-top">
+						<nav class="navbar navbar-default">
+							<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+									  </button>
+									<div class="navbar-brand">
+                                        <h1><span><a href="{%url 'wordrecite:indexview'%}">VocalMem</a></span></h1>
+									</div>
+								</div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                    <li><a href="{%url 'wordrecite:indexview'%}">Home </span></a></li>
+                    <li><a href="{%url 'wordrecite:about'%}">What's VocalMem</a></li>
+                    <li class="active"><a href="{%url 'wordrecite:vocabularyview'%}">Vocabularies<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{%url 'wordrecite:mynotesview'%}">Notebook</a></li>
+                    {% if request.user.is_authenticated%}
+                    <li><a>Welcome, {{usermore}}</a></li>
+                    <li><a href="{%url 'wordrecite:logoutview'%}">Logout</a></li>
+                    {% endif %}
+                    {%if not request.user.is_authenticated%}
+                    <li><a href="{%url 'wordrecite:registerview'%}">Register</a></li>
+                    <li><a href="{%url 'wordrecite:loginview'%}">Login</a></li>
+                    {% endif %}
+                </ul>
+			
+		</div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+						</nav>
+
+					</div>
+		</div>
+</div>
+<!--header-->
+		<!--rooms-->
+			<div class="content">
+					<div class="room-section">
+						<div class="container">
+						<h2>开始在VocalMem学习</h2>
+							<div class="room-grids">
+							<div class="room1">
+								<div class="col-md-5 room-grid">
+								<a href="{%url 'wordrecite:settingsview'%}" class="mask">
+									<img src="{% static 'wordrecite/images/r010.jpg' %}" class=" mask img-responsive zoom-img" alt="" /></a>
+								</div>
+								<div class="col-md-7 room-grid1">
+                                    <a href="{%url 'wordrecite:settingsview'%}"><h4>准备背单词</h4></a>  
+                                    <h5> —— 设置您的学习计划 </h5>
+                                    <p> 具体的学习规划，可以参照一些英语学习小站推荐的规划流程，如从英语音标开始，到背单词，然后到词组和句子的学习，培养自己每天学点英语的好习惯。</p>
+                                    <p>背单词是贯穿整个英语学习的主线，无论你是零基础还是资深英语学习者，背单词始终是个循环不间断的程序，温故知新是记单词的原则。单词的记忆和拓展是一种必需，没有词汇的积累是很难将英语学习进行下去。</p>
+                                    <p>要学习词汇，不仅仅要记单词的拼写、字面意思，还要记住单词的标准发音，词组搭配和多种用法，以及了解跟相近的词用法有何不同。例如，angry与furious都表示生气，前者生气程度较低，后者表示狂怒。如果你认为词汇库实在浩瀚，可以设定一定的场景，背诵该场景下的单词，能学得更有针对性. </p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="room2">
+								<div class="col-md-5 room-grid">
+								<a href="{%url 'wordrecite:statusview'%}" class="mask">
+									<img src="{% static 'wordrecite/images/r02.jpg' %}" class="img-responsive zoom-img" alt="" /></a>
+								</div>
+								<div class="col-md-7 room-grid1">
+									<a href="{%url 'wordrecite:statusview'%}"><h4>开始背单词</h4></a>  
+									<h5> —— 继续您的学习计划。</h5>
+                                    <p> 每天的单词任务一旦完成，马上就结束，并且给自己一个正向的自我肯定。这时候你对当天学习的心理印象是积极的，这种感受会随着时间的推移渐渐累积，逐渐形成一个具有成就感的积极的心理感受。那么，在每天开始学习之前，你的心态不会是消极痛苦的，而是一种愉悦的心态。</p>
+                                    <p>很多人完成了当天的学习任务后，觉得自己好棒，然后想超额完成任务，最后把自己搞的精疲力尽，对学习的热情完全消失。如果每天的学习都以这种形式结束，那么学习在你心中的印象就是痛苦感的累积。所以学会见好就收，这样才能细水长流。</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--rooms-->
+				<!--GET IN TOUCH-->
+				<!--GET IN TOUCH-->
+			</div>
+			<!--footer-->
+					<div class="footer-section">
+						<div class="container">
+							<div class="footer-top">
+								<p>&copy; 2018 VocalMem. All rights reserved | Design by Yunze Man </a></p>
+							</div>
+						</div>
+					</div>
+</body>
+</html>
+{%endblock%}

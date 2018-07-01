@@ -1,0 +1,110 @@
+{% load staticfiles %}
+{%block content%}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>我的笔记-deprecated - VocalMem</title>
+<!-- Favicon-->
+<link type="favicon" rel="shortcut icon" href="{% static 'wordrecite/images/favicon.pg' %}" />
+<link href="{% static 'wordrecite/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'wordrecite/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="VocalMem Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="{% static 'wordrecite/js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'wordrecite/js/bootstrap.js' %}"></script>
+<script src="{% static 'wordrecite/js/responsiveslides.min.js' %}"></script>
+ <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+
+</head>
+<body>
+		<!--header-->
+			<div class="header head-top">
+				<div class="container">
+					<div class="header-top">
+						<nav class="navbar navbar-default">
+							<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+									  </button>
+									<div class="navbar-brand">
+										<h1><span><a href="{%url 'wordrecite:indexview'%}">VocalMem</a></span></h1>
+									</div>
+								</div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+										<li><a href="{%url 'wordrecite:indexview'%}">Home </span></a></li>
+										<li class="active"><a href="{%url 'wordrecite:about'%}">What's VocalMem<span class="sr-only">(current)</span></a></li>
+										<li><a href="{%url 'wordrecite:vocabularyview'%}">Vocabularies</a></li>
+										<li><a href="{%url 'wordrecite:mynotesview'%}">Notebook</a></li>
+										{% if request.user.is_authenticated%}
+										<li><a>Welcome, {{usermore}}</a></li>
+										<li><a href="{%url 'wordrecite:logoutview'%}">Logout</a></li>
+										{% endif %}
+										{%if not request.user.is_authenticated%}
+										<li><a href="{%url 'wordrecite:registerview'%}">Register</a></li>
+										<li><a href="{%url 'wordrecite:loginview'%}">Login</a></li>
+										{% endif %}
+                                    </ul>
+
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+						</nav>
+
+					</div>
+		</div>
+</div>
+<!--header-->
+<div class="content">
+    <div class="about-section">
+        <div class="container">
+
+            <h2 style="text-align:center">Hello, {{usermore}}</h2>
+            <div class="col-md-8 col-md-offset-2">
+              {% if message %}<div class="alert alert-success" role="alert"><strong>{{ message }}</strong></div>{% endif %}
+              {%if mynotes%}
+              {%for note in mynotes%}
+              <ul class="list-group">
+              <li class="list-group-item list-group-item-info" ><strong>单词：</strong>{{note.word}}</li>
+              <li class="list-group-item " ><strong>内容：</strong>{{note.content|safe}}</li>
+              <a href="{%url 'wordrecite:editnoteview' note.word.id%}"><button type="button" class="btn btn-info">编辑</button></a>
+              </ul>
+            
+              {%endfor%}
+              {%endif%}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="footer-section">
+    <div class="container">
+        <div class="footer-top">
+            <p>&copy; 2018 VocalMem. All rights reserved | Design by Yunze Man </a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+{%endblock%}
