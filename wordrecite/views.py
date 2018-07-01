@@ -166,7 +166,8 @@ def settingsview(request):
             return HttpResponseRedirect(reverse("wordrecite:settingsview"))
     else:
         return render(request, 'wordrecite/settings.html', context={
-            'form': form
+            'form': form,
+            'usermore': usermore
         })
 
 
