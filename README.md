@@ -3,6 +3,22 @@
 This is a demo Word Reciting Website for `B/S Software Design` class.
 
 ## 1. Introduction
+The _*VocalMem*_ website is a simple B/S website for word reciting. It contains user registration and login, information saving and checking, study plan setting and managing, note adding, deleting and editing. 
+
+On this Framework, you can easily change the front-end HTML, as well as Django backend. This is a demo so any change is welcomed. 
+
+#### 1.1 Design Graph
+![Design]()
+
+#### 1.1 Environment
+- Database: MySQL
+- Python version: 3.6
+- Framework: Django 1.11
+- OS：Windows, Linux, Mac
+- Browser: Chrome, Firefox, Safari (Others are not tested)
+
+## 2. Demo
+
 
 
 ## 2. How to deploy and run the website
@@ -13,6 +29,11 @@ __*(Note that PythonAnyWhere account has expired, so you might want to use Metho
 
 #### 2.2 Run locally by source code
 ###### 2.2.1 Activate virtual environment venv
+venv is not included because of its size
+Basically, you need:
+- Django 1.11
+- Python 3.6
+- Database MySQL
 ###### 2.2.2 Install Prerequisit
 > _mysql database client_: Default is mysqlclient
 ###### 2.2.3 Change setting file
@@ -40,12 +61,12 @@ python manage.py migrate
 ```
 
 ###### 2.2.5 Import dictionary
-```
+```python
 python add_words_full.py
 ```
 
 ###### 2.2.6 Deploy
-```
+```python
 python manage.py runserver
 ```
 
