@@ -17,7 +17,7 @@ __*(Note that PythonAnyWhere account has expired, so you might want to use Metho
 > _mysql database client_: Default is mysqlclient
 ###### 2.2.3 Change setting file
 Inside `mysite/settings.py`
-```json
+```python
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
