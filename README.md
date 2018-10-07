@@ -1,2 +1,3 @@
 # Word-Reciting-Website
-B/S Software Design
+
+This is a demo Word Reciting Website for `B/S Software Design` class.
